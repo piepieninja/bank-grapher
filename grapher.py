@@ -18,8 +18,9 @@ def graph():
         header=0,
         index_col=['Posted Date', 'Amount'],
         usecols=['Posted Date', 'Amount'],
-        parse_dates=['Posted Date']) # read in the guy
-    #print (df)
+        parse_dates=['Posted Date'],
+        engine='python') # read in the guy
+    #print (df) #    <-----
     df = df.reset_index()
     #print df['Amount']
     money_list = []
@@ -50,10 +51,11 @@ def graph():
         header=0,
         index_col=['Posted Date', 'Amount'],
         usecols=['Posted Date', 'Amount'],
-        parse_dates=['Posted Date']) # read in the guy
-    #print (df)
+        parse_dates=['Posted Date'],
+        engine='python') # read in the guy
+    #print (df2) #    <-----
     df2 = df2.reset_index()
-    #print df['Amount']
+    #print df2['Amount']
     money_list2 = []
     date_list2 = []
     bad_indexes2 = []
@@ -76,7 +78,11 @@ def graph():
 
 
     plt.plot(date_list, money_list, color="blue")
-    plt.plot(date_list2, money_list2, color="red")
+    print len(date_list2)
+    print date_list2
+    print len(money_list2)
+    print money_list2
+    plt.plot(date_list2, money_list2[:-1], color="red")
     plt.show()
     #for x in df['Date']:
         #print x
